@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MATH 2650 · Exam 2 Interactive Review</title>
+<script>
+  window.MathJax = {tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--ink:#182330;--muted:#667588;--navy:#112d45;--teal:#177a79;--soft:#eff6f6;--border:#dae3eb;--paper:#fff;--ground:#f5f7fa;--gold:#a06518}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:#205c82} a:focus-visible,button:focus-visible,textarea:focus-visible{outline:3px solid #60a5c7;outline-offset:3px}
+.site-hero{background:linear-gradient(112deg,#10283d 0%,#173d56 62%,#1b5963 100%);color:white;padding:38px 20px 32px;border-bottom:4px solid #c6a366}
+.shell{width:min(1010px,calc(100% - 36px));margin-inline:auto}
+.course-tag{font-size:12px;letter-spacing:.16em;font-weight:800;opacity:.8}
+h1{font-family:Georgia,"Times New Roman",serif;line-height:1.13;font-size:clamp(30px,4.8vw,48px);font-weight:700;letter-spacing:-.025em;margin:10px 0 12px}
+.hero-description{max-width:760px;color:#e7edf1;font-size:16px;margin:0}
+.hero-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.hero-pills span{padding:5px 11px;border-radius:22px;border:1px solid #ffffff42;background:#ffffff11;font-size:12px}
+main{padding-top:23px;padding-bottom:64px}
+.intro,.problem{background:var(--paper);border:1px solid var(--border);border-radius:16px;box-shadow:0 5px 18px #20334b0b}
+.intro{padding:24px;margin-bottom:24px}
+.intro h2{font-size:19px;margin:0 0 12px}.intro p{margin:0 0 12px}.intro ol{margin:0 0 14px;padding-left:23px}
+.intro li+li{margin-top:4px}.privacy{font-size:13px;color:var(--muted);margin-top:10px!important}
+.overview{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--border);padding-top:15px;margin-top:18px}.overview label{font-weight:750;font-size:13px}
+.progress-rail{width:220px;max-width:100%;height:9px;border-radius:20px;background:#e9eff2;overflow:hidden}.progress-fill{width:0;background:var(--teal);height:100%;transition:width .2s}
+.index{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.index a{font-weight:700;font-size:13px;border:1px solid #d8e4e9;border-radius:9px;text-decoration:none;padding:6px 11px;background:#f7fafb}.index a:hover{background:#e9f3f6}
+.problem{padding:24px 26px;margin:22px 0;scroll-margin-top:18px}
+.problem-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:15px;border-bottom:1px solid var(--border)}
+.problem-header h2{font-size:21px;line-height:1.25;margin:4px 0 0;letter-spacing:-.02em}.eyebrow{font-size:12px;color:var(--teal);font-weight:800;letter-spacing:.10em}
+.tag{flex-shrink:0;font-size:12px;background:var(--soft);color:#135c61;border:1px solid #d4e8e7;padding:4px 9px;border-radius:20px;font-weight:700}
+.math-question{border-left:4px solid var(--teal);background:#fafcfd;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0 18px;font-size:16px}
+.answer-label{font-weight:800;display:block;font-size:14px;margin-bottom:7px}
+textarea{width:100%;height:142px;min-height:90px;resize:vertical;background:#fff;border-radius:10px;border:1px solid #bdcbd8;padding:13px;font:15px/1.6 system-ui,sans-serif}
+.micro{font-size:12px;color:var(--muted)}
+.hint-actions{display:flex;gap:13px;flex-wrap:wrap;align-items:center;margin:17px 0 9px}.hint-counter{color:var(--muted);font-size:13px}
+.btn{border-radius:9px;padding:9px 13px;display:inline-flex;align-items:center;justify-content:center;font:700 13px/1.3 system-ui,sans-serif;text-decoration:none;cursor:pointer;min-height:40px;border:1px solid #a9becd;transition:background .15s}
+.btn.secondary{background:#fff;color:#23445b}.btn.secondary:hover{background:#eef4f7}.btn.primary{background:#165c72;color:white;border-color:#165c72}.btn.primary:hover{background:#104a5b}.btn.external{background:#fff;color:#23445b;border-color:#c4d1db}
+.btn:disabled{opacity:.5;cursor:default}
+.hints{display:grid;gap:10px}
+.hint{border:1px solid #eedbb9;background:#fffbf2;border-radius:11px;padding:12px 15px}.hint[hidden]{display:none!important}
+.hint-top{display:flex;flex-wrap:wrap;gap:7px;align-items:baseline;margin-bottom:6px}.hint-index{color:var(--gold);font-weight:800;font-size:13px}.hint-title{font-weight:700;font-size:13px}
+.hint-text{font-size:14px}.hint-text p{margin:0 0 8px}
+.ai-panel{border:1px solid #d3e2ea;background:#f5f9fb;margin-top:19px;border-radius:12px;padding:16px 18px}.ai-panel-top{display:flex;justify-content:space-between;gap:10px}.ai-panel h3{font-size:15px;margin:0}.ai-panel p{font-size:13px;margin:4px 0 0;color:#526678}.ai-icon{color:#518098;font-size:23px}
+.ai-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.prompt{font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;max-height:260px;overflow-y:auto;background:#fff;border:1px solid #d5dee8;padding:12px;border-radius:9px;margin:13px 0 6px}.prompt[hidden]{display:none!important}.ai-status{margin-top:10px}
+.solution{margin-top:18px;border:1px solid #d7e3db;border-radius:11px;overflow:hidden;background:#fbfdfb}.solution>summary{padding:13px 15px;cursor:pointer;font-weight:800;color:#23513c;list-style-position:inside;background:#f5faf6}.solution[open]>summary{border-bottom:1px solid #d7e3db}.solution-sub{font-size:12px;color:#697b71;font-weight:450;margin-left:5px}.solution-body{padding:14px 17px}.solution-body p:first-child{margin-top:0}.solution-body p:last-child{margin-bottom:0}
+.card-footer{display:flex;justify-content:space-between;gap:10px;margin-top:14px;font-size:12px}.card-footer .text-btn{padding:0;border:0;background:none;color:#8b3c42;text-decoration:underline;cursor:pointer;font:inherit}
+.table-scroll{overflow-x:auto;max-width:100%}table{border-collapse:collapse;min-width:600px;width:100%;font-size:13px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #dae3eb}th{background:#f3f7f9}
+.math-question mjx-container[display="true"],.hint mjx-container[display="true"],.solution mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+.footer{padding:18px;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:660px){.site-hero{padding:28px 18px}.shell{width:calc(100% - 24px)}.problem,.intro{padding:17px}.problem-header{flex-direction:column}.math-question{padding:12px 14px}.tag{align-self:flex-start}.ai-panel{padding:14px}.ai-actions .btn{flex:1}.overview{justify-content:flex-start}.card-footer{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} .progress-fill,.btn{transition:none}}
+</style>
+</head>
+<body id="page-top">
+<header class="site-hero"><div class="shell"><div class="course-tag">MATH 2650 · SESSION 145 · FALL 2026</div><h1>Exam 2 Interactive Review</h1><p class="hero-description">Practice the methods from class at your own pace. Each problem is broken into instructor-designed steps, with optional ChatGPT diagnosis when you need help identifying a gap.</p><div class="hero-pills"><span>10 review problems</span><span>Instructor answer-key hints</span><span>Optional AI diagnosis</span><span>Self-paced practice</span></div></div></header>
+<main class="shell">
+<section class="intro"><h2>How to use this review</h2><ol><li>Try each question before opening its hints.</li><li>Choose <strong>Reveal Hint</strong> when you need the next step. Hints follow the Step or Principle sequence in the review answer key.</li><li>For personalized feedback, enter your work, select <strong>Prepare diagnosis</strong>, copy the prompt, and paste it into ChatGPT. Ask the AI to diagnose just your current attempt.</li><li>Open <strong>Show the complete solution</strong> only after you have made a serious attempt.</li></ol>
+<p class="privacy">Your draft work and hint progress are saved in your own browser only. This page itself does not send work anywhere; sharing a prompt with ChatGPT is optional. AI feedback may contain mistakes, so verify it against the instructor's solutions.</p>
+<div class="overview"><label for="completion">Problems practiced (hints viewed or work entered): <strong id="complete-count">0 / 10</strong></label><div class="progress-rail" id="completion"><div class="progress-fill" id="progress-fill"></div></div></div>
+<nav class="index" aria-label="Jump to a review problem"><a href="#problem-1">1 · Stability</a><a href="#problem-2">2 · Stability</a><a href="#problem-3">3 · Wronskian</a><a href="#problem-4">4 · Euler method</a><a href="#problem-5">5 · Euler method</a><a href="#problem-6">6 · Characteristic roots</a><a href="#problem-7">7 · Characteristic roots</a><a href="#problem-8">8 · Characteristic roots</a><a href="#problem-9">9 · Reverse construction</a><a href="#problem-10">10 · Reverse construction</a></nav></section>
+<article class="problem" id="problem-1" data-problem="1">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 01</span><h2>Equilibrium solutions and stability</h2></div><span class="tag">Stability</span></div>
+  <div class="math-question">Consider the autonomous equation
+\[\frac{dx}{dt}=e^{-x}(x^3-5x^2+8x-4).\]
+Find all equilibrium solutions and determine their stability.</div>
+  <label class="answer-label" for="answer-1">Your current work</label>
+  <textarea id="answer-1" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-1">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-1" onclick="showNextHint(1)">Reveal Hint 1 of 3 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-1">No hints viewed</span></div>
+  <div class="hints" id="hints-1"><section class="hint" id="hint-1-1" hidden><div class="hint-top"><span class="hint-index">Step 1</span><span class="hint-title">Find the equilibrium values</span></div><div class="hint-text">Since \(e^{-x}>0\) for every real \(x\), equilibria come from the polynomial. Factor it:
+\[x^3-5x^2+8x-4=(x-1)(x-2)^2.\]
+Which values of \(x\) make the right-hand side vanish?</div></section><section class="hint" id="hint-1-2" hidden><div class="hint-top"><span class="hint-index">Step 2</span><span class="hint-title">Construct the sign chart</span></div><div class="hint-text">Write \(F(x)=e^{-x}(x-1)(x-2)^2\). The exponential is positive and the squared factor is nonnegative, so away from equilibria the sign is determined by \(x-1\):
+\[\begin{array}{c|ccc}
+\text{Interval}&(-\infty,1)&(1,2)&(2,\infty)\\\hline
+\operatorname{sgn}F&-&+&+\\
+\text{Direction}&\leftarrow&\rightarrow&\rightarrow
+\end{array}\]
+Remember that \(x'(t)>0\) means solutions move toward larger \(x\).</div></section><section class="hint" id="hint-1-3" hidden><div class="hint-top"><span class="hint-index">Step 3</span><span class="hint-title">Classify stability from both sides</span></div><div class="hint-text">At \(x=1\), the arrows point away on both sides. At \(x=2\), they point toward \(2\) from the left but away from \(2\) on the right. For two-sided stability, motion away on either side is enough to make an equilibrium unstable.</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(1)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(1)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-1" hidden></pre><div class="micro ai-status" role="status" id="status-1">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-1"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>Factor the right-hand side:</p>
+\[F(x)=e^{-x}(x-1)(x-2)^2.\]
+<p>The equilibrium solutions are</p>
+\[\boxed{x(t)\equiv1},\qquad\boxed{x(t)\equiv2}.\]
+<p>Because \(e^{-x}>0\) and \((x-2)^2>0\) off the roots, the phase-line directions are</p>
+\[\begin{array}{c|ccc}
+\text{Interval}&(-\infty,1)&(1,2)&(2,\infty)\\\hline
+\operatorname{sgn}F&-&+&+\\
+\text{Direction}&\leftarrow&\rightarrow&\rightarrow
+\end{array}\]
+<p>Both sides move away from \(x=1\). At \(x=2\), solutions approach from the left but move away on the right. Thus, in the usual two-sided sense,</p>
+\[\boxed{x=1:\ \text{unstable}},\qquad\boxed{x=2:\ \text{unstable}}.\]</div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(1)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+<article class="problem" id="problem-2" data-problem="2">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 02</span><h2>Equilibrium solutions and stability</h2></div><span class="tag">Stability</span></div>
+  <div class="math-question">Consider the autonomous equation
+\[\frac{dx}{dt}=-(x-1)(x-2)^2(x-3)(x-4)^2.\]
+Find all equilibrium solutions and determine their stability.</div>
+  <label class="answer-label" for="answer-2">Your current work</label>
+  <textarea id="answer-2" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-2">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-2" onclick="showNextHint(2)">Reveal Hint 1 of 3 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-2">No hints viewed</span></div>
+  <div class="hints" id="hints-2"><section class="hint" id="hint-2-1" hidden><div class="hint-top"><span class="hint-index">Step 1</span><span class="hint-title">Identify all equilibria</span></div><div class="hint-text">Solve \(F(x)=0\) by setting each factor equal to zero. The repeated factors at \(2\) and \(4\) still give one equilibrium value each.</div></section><section class="hint" id="hint-2-2" hidden><div class="hint-top"><span class="hint-index">Step 2</span><span class="hint-title">Determine signs between equilibria</span></div><div class="hint-text">Away from the roots, \((x-2)^2\) and \((x-4)^2\) are positive. Hence the sign is controlled by \(-(x-1)(x-3)\):
+\[\begin{array}{c|ccccc}
+\text{Interval}&(-\infty,1)&(1,2)&(2,3)&(3,4)&(4,\infty)\\\hline
+\operatorname{sgn}F&-&+&+&-&-\\
+\text{Direction}&\leftarrow&\rightarrow&\rightarrow&\leftarrow&\leftarrow
+\end{array}\]</div></section><section class="hint" id="hint-2-3" hidden><div class="hint-top"><span class="hint-index">Step 3</span><span class="hint-title">Read stability from the phase line</span></div><div class="hint-text">An equilibrium is stable when nearby solutions on both sides move toward it (or remain sufficiently close). If solutions move away from it on either side, it is unstable. Apply this at \(x=1,2,3,4\).</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(2)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(2)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-2" hidden></pre><div class="micro ai-status" role="status" id="status-2">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-2"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>The equilibrium solutions are</p>
+\[\boxed{x(t)\equiv1,\quad x(t)\equiv2,\quad x(t)\equiv3,\quad x(t)\equiv4}.\]
+<p>On the intervals separated by the four roots, the signs of \(F(x)\) are</p>
+\[\begin{array}{c|ccccc}
+\text{Interval}&(-\infty,1)&(1,2)&(2,3)&(3,4)&(4,\infty)\\\hline
+\operatorname{sgn}F&-&+&+&-&-\\
+\text{Direction}&\leftarrow&\rightarrow&\rightarrow&\leftarrow&\leftarrow
+\end{array}\]
+<p>Therefore</p>
+\[\boxed{x=1:\text{ unstable}},\quad\boxed{x=2:\text{ unstable}},\quad
+\boxed{x=3:\text{ stable}},\quad\boxed{x=4:\text{ unstable}}.\]
+<p>The equilibria at \(2\) and \(4\) have one-sided attraction only, which does not make them stable in the two-sided sense used here.</p></div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(2)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+<article class="problem" id="problem-3" data-problem="3">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 03</span><h2>Prove linear independence</h2></div><span class="tag">Wronskian</span></div>
+  <div class="math-question">Use the Wronskian to prove that the functions
+\[f(x)=e^x,\qquad g(x)=xe^x,\qquad h(x)=e^{-x}\]
+are linearly independent on \(\mathbb R\).</div>
+  <label class="answer-label" for="answer-3">Your current work</label>
+  <textarea id="answer-3" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-3">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-3" onclick="showNextHint(3)">Reveal Hint 1 of 3 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-3">No hints viewed</span></div>
+  <div class="hints" id="hints-3"><section class="hint" id="hint-3-1" hidden><div class="hint-top"><span class="hint-index">Step 1</span><span class="hint-title">Differentiate each function twice</span></div><div class="hint-text">For three functions the Wronskian uses their values, first derivatives, and second derivatives:
+\[\begin{array}{c|ccc}
+& e^x & xe^x & e^{-x}\\\hline
+\text{first derivative}&e^x&(x+1)e^x&-e^{-x}\\
+\text{second derivative}&e^x&(x+2)e^x&e^{-x}
+\end{array}\]
+Double-check the product rule for \((xe^x)'\) and \((xe^x)''\).</div></section><section class="hint" id="hint-3-2" hidden><div class="hint-top"><span class="hint-index">Step 2</span><span class="hint-title">Form and simplify the determinant</span></div><div class="hint-text">Set up
+\[W(f,g,h)=\begin{vmatrix}
+e^x&xe^x&e^{-x}\\
+e^x&(x+1)e^x&-e^{-x}\\
+e^x&(x+2)e^x&e^{-x}
+\end{vmatrix}.\]
+Factoring exponentials from columns gives a factor \(e^x\). Then subtract row 1 from rows 2 and 3 to get the smaller determinant
+\[e^x\begin{vmatrix}1&x&1\\0&1&-2\\0&2&0\end{vmatrix}.\]</div></section><section class="hint" id="hint-3-3" hidden><div class="hint-top"><span class="hint-index">Step 3</span><span class="hint-title">Explain why the result implies independence</span></div><div class="hint-text">The determinant simplifies to
+\[W(f,g,h)=4e^x.\]
+Since this is nonzero for every real \(x\), explain what the Wronskian criterion implies about \(f,g,h\).</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(3)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(3)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-3" hidden></pre><div class="micro ai-status" role="status" id="status-3">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-3"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>By the product rule,</p>
+\[f'=e^x,\quad g'=(x+1)e^x,\quad h'=-e^{-x},\]
+\[f''=e^x,\quad g''=(x+2)e^x,\quad h''=e^{-x}.\]
+<p>Then</p>
+\[\begin{aligned}
+W(f,g,h)
+&=\begin{vmatrix}e^x&xe^x&e^{-x}\\e^x&(x+1)e^x&-e^{-x}\\e^x&(x+2)e^x&e^{-x}\end{vmatrix}\\
+&=e^x\begin{vmatrix}1&x&1\\0&1&-2\\0&2&0\end{vmatrix}
+=\boxed{4e^x}.
+\end{aligned}\]
+<p>Since \(4e^x\ne0\) everywhere, the three functions are <strong>linearly independent on \(\mathbb R\)</strong>.</p></div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(3)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+<article class="problem" id="problem-4" data-problem="4">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 04</span><h2>Approximate y(3/5)</h2></div><span class="tag">Euler method</span></div>
+  <div class="math-question">Use <strong>Euler’s method</strong> to approximate \(y(\frac35)\) for
+\[y'=5(x+y),\qquad y(0)=1,\qquad h=\frac15.\]
+Show your computations.</div>
+  <label class="answer-label" for="answer-4">Your current work</label>
+  <textarea id="answer-4" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-4">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-4" onclick="showNextHint(4)">Reveal Hint 1 of 3 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-4">No hints viewed</span></div>
+  <div class="hints" id="hints-4"><section class="hint" id="hint-4-1" hidden><div class="hint-top"><span class="hint-index">Step 1</span><span class="hint-title">Collect the given information</span></div><div class="hint-text">Identify
+\[h=\tfrac15,\qquad x_0=0,\qquad y_0=1,\qquad f(x,y)=5(x+y).\]
+To go from \(x=0\) to \(x=\tfrac35\), how many steps of size \(\tfrac15\) are needed?</div></section><section class="hint" id="hint-4-2" hidden><div class="hint-top"><span class="hint-index">Step 2</span><span class="hint-title">Write Euler’s recurrence</span></div><div class="hint-text">Apply
+\[x_{n+1}=x_n+h,\qquad y_{n+1}=y_n+h f(x_n,y_n).\]
+Use the <em>current</em> values \((x_n,y_n)\) on the right-hand side; not the next values.</div></section><section class="hint" id="hint-4-3" hidden><div class="hint-top"><span class="hint-index">Step 3</span><span class="hint-title">Calculate all three iterations</span></div><div class="hint-text">Fill in each update:
+\[\begin{array}{c|c|c|c}
+n & x_n & y_n & y_{n+1}\\\hline
+0&0&1&2\\
+1&\tfrac15&2&\tfrac{21}{5}\\
+2&\tfrac25&\tfrac{21}{5}&\tfrac{44}{5}
+\end{array}\]
+For example \(y_2=2+\frac15[5(\frac15+2)]=\frac{21}{5}\). The third update is the requested approximation.</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(4)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(4)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-4" hidden></pre><div class="micro ai-status" role="status" id="status-4">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-4"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>With \(h=\frac15\) and \(f(x,y)=5(x+y)\), Euler’s method gives</p>
+\[x_{n+1}=x_n+\frac15,\qquad y_{n+1}=y_n+\frac15[5(x_n+y_n)].\]
+<div class="table-scroll"><table><thead><tr><th>\(n\)</th><th>\(x_n\)</th><th>\(y_n\)</th><th>\(x_{n+1}\)</th><th>Update for \(y_{n+1}\)</th></tr></thead><tbody>
+<tr><td>0</td><td>\(0\)</td><td>\(1\)</td><td>\(\frac15\)</td><td>\(1+\frac15[5(0+1)]=2\)</td></tr>
+<tr><td>1</td><td>\(\frac15\)</td><td>\(2\)</td><td>\(\frac25\)</td><td>\(2+\frac15[5(\frac15+2)]=\frac{21}{5}\)</td></tr>
+<tr><td>2</td><td>\(\frac25\)</td><td>\(\frac{21}{5}\)</td><td>\(\frac35\)</td><td>\(\frac{21}{5}+\frac15[5(\frac25+\frac{21}{5})]=\frac{44}{5}\)</td></tr>
+</tbody></table></div>
+<p>Thus</p>
+\[\boxed{y(\tfrac35)\approx\tfrac{44}{5}=8.8}.\]</div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(4)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+<article class="problem" id="problem-5" data-problem="5">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 05</span><h2>Approximate y(3/4)</h2></div><span class="tag">Euler method</span></div>
+  <div class="math-question">Use <strong>Euler’s method</strong> to approximate \(y(\frac34)\) for
+\[y'=4xy,\qquad y(0)=1,\qquad h=\frac14.\]
+Show your computations.</div>
+  <label class="answer-label" for="answer-5">Your current work</label>
+  <textarea id="answer-5" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-5">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-5" onclick="showNextHint(5)">Reveal Hint 1 of 3 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-5">No hints viewed</span></div>
+  <div class="hints" id="hints-5"><section class="hint" id="hint-5-1" hidden><div class="hint-top"><span class="hint-index">Step 1</span><span class="hint-title">Collect the given information</span></div><div class="hint-text">Identify
+\[h=\tfrac14,\qquad x_0=0,\qquad y_0=1,\qquad f(x,y)=4xy.\]
+Three steps of length \(\frac14\) take us from \(0\) to \(\frac34\).</div></section><section class="hint" id="hint-5-2" hidden><div class="hint-top"><span class="hint-index">Step 2</span><span class="hint-title">Write Euler’s recurrence</span></div><div class="hint-text">Use
+\[x_{n+1}=x_n+h,\qquad y_{n+1}=y_n+h f(x_n,y_n).\]
+Notice \(f(0,1)=0\): this determines the very first update.</div></section><section class="hint" id="hint-5-3" hidden><div class="hint-top"><span class="hint-index">Step 3</span><span class="hint-title">Calculate all three iterations</span></div><div class="hint-text">The successive approximations are
+\[\begin{array}{c|c|c|c}
+n & x_n & y_n & y_{n+1}\\\hline
+0&0&1&1\\
+1&\tfrac14&1&\tfrac54\\
+2&\tfrac12&\tfrac54&\tfrac{15}{8}
+\end{array}\]
+For the final update, evaluate \(4x_2y_2=4(\frac12)(\frac54)\) using the <em>previous</em> values.</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(5)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(5)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-5" hidden></pre><div class="micro ai-status" role="status" id="status-5">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-5"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>With \(h=\frac14\) and \(f(x,y)=4xy\),</p>
+\[x_{n+1}=x_n+\frac14,\qquad y_{n+1}=y_n+\frac14(4x_ny_n).\]
+<div class="table-scroll"><table><thead><tr><th>\(n\)</th><th>\(x_n\)</th><th>\(y_n\)</th><th>\(x_{n+1}\)</th><th>Update for \(y_{n+1}\)</th></tr></thead><tbody>
+<tr><td>0</td><td>\(0\)</td><td>\(1\)</td><td>\(\frac14\)</td><td>\(1+\frac14(4\cdot0\cdot1)=1\)</td></tr>
+<tr><td>1</td><td>\(\frac14\)</td><td>\(1\)</td><td>\(\frac12\)</td><td>\(1+\frac14(4\cdot\frac14\cdot1)=\frac54\)</td></tr>
+<tr><td>2</td><td>\(\frac12\)</td><td>\(\frac54\)</td><td>\(\frac34\)</td><td>\(\frac54+\frac14(4\cdot\frac12\cdot\frac54)=\frac{15}{8}\)</td></tr>
+</tbody></table></div>
+<p>Thus</p>
+\[\boxed{y(\tfrac34)\approx\tfrac{15}{8}=1.875}.\]</div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(5)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+<article class="problem" id="problem-6" data-problem="6">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 06</span><h2>Third-order homogeneous linear equation</h2></div><span class="tag">Characteristic roots</span></div>
+  <div class="math-question">Find the general solution of
+\[y^{(3)}-3y'+2y=0.\]</div>
+  <label class="answer-label" for="answer-6">Your current work</label>
+  <textarea id="answer-6" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-6">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-6" onclick="showNextHint(6)">Reveal Hint 1 of 2 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-6">No hints viewed</span></div>
+  <div class="hints" id="hints-6"><section class="hint" id="hint-6-1" hidden><div class="hint-top"><span class="hint-index">Principle 1</span><span class="hint-title">Form the characteristic polynomial</span></div><div class="hint-text">Use the correspondence \(y^{(k)}\longleftrightarrow r^k\). The characteristic equation is
+\[r^3-3r+2=(r-1)^2(r+2)=0.\]
+Read off the root \(r=1\) with multiplicity 2 and \(r=-2\) with multiplicity 1.</div></section><section class="hint" id="hint-6-2" hidden><div class="hint-top"><span class="hint-index">Principle 2</span><span class="hint-title">Build contributions from each root</span></div><div class="hint-text">Use the rule
+\[(r,k)\longmapsto P_{k-1}(x)e^{rx},\]
+where \(P_{k-1}\) has degree at most \(k-1\). Thus \((1,2)\) contributes \((C_1+C_2x)e^x\), whereas \((-2,1)\) contributes \(C_3e^{-2x}\).</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(6)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(6)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-6" hidden></pre><div class="micro ai-status" role="status" id="status-6">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-6"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>The characteristic equation is</p>
+\[r^3-3r+2=(r-1)^2(r+2)=0.\]
+<p>The roots are \(1\) (multiplicity 2) and \(-2\) (multiplicity 1), so</p>
+\[\boxed{y(x)=(C_1+C_2x)e^x+C_3e^{-2x}}.\]</div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(6)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+<article class="problem" id="problem-7" data-problem="7">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 07</span><h2>Fourth-order equation with imaginary roots</h2></div><span class="tag">Characteristic roots</span></div>
+  <div class="math-question">Find the general solution of
+\[y^{(4)}+5y''+4y=0.\]</div>
+  <label class="answer-label" for="answer-7">Your current work</label>
+  <textarea id="answer-7" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-7">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-7" onclick="showNextHint(7)">Reveal Hint 1 of 3 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-7">No hints viewed</span></div>
+  <div class="hints" id="hints-7"><section class="hint" id="hint-7-1" hidden><div class="hint-top"><span class="hint-index">Principle 1</span><span class="hint-title">Find the characteristic roots</span></div><div class="hint-text">The characteristic equation is
+\[r^4+5r^2+4=0.\]
+Let \(u=r^2\). Then \((u+1)(u+4)=0\), so
+\[r=\pm i,\qquad r=\pm2i,\]
+all of multiplicity 1.</div></section><section class="hint" id="hint-7-2" hidden><div class="hint-top"><span class="hint-index">Principle 2</span><span class="hint-title">Write the exponential solutions</span></div><div class="hint-text">Each simple root \(r\) contributes \(e^{rx}\). Hence the complex exponential form is
+\[y=Ae^{ix}+Be^{-ix}+Ce^{2ix}+De^{-2ix}.\]</div></section><section class="hint" id="hint-7-3" hidden><div class="hint-top"><span class="hint-index">Principle 3</span><span class="hint-title">Combine conjugate pairs</span></div><div class="hint-text">By Euler’s formula, \(e^{ibx}\) and \(e^{-ibx}\) combine to form the real solutions \(\cos bx\) and \(\sin bx\). Use \(b=1\) and \(b=2\).</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(7)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(7)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-7" hidden></pre><div class="micro ai-status" role="status" id="status-7">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-7"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>The characteristic polynomial factors as</p>
+\[r^4+5r^2+4=(r^2+1)(r^2+4).\]
+<p>Its simple roots are \(\pm i,\pm2i\). Pair conjugate exponential terms to obtain</p>
+\[\boxed{y=C_1\cos x+C_2\sin x+C_3\cos2x+C_4\sin2x}.\]</div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(7)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+<article class="problem" id="problem-8" data-problem="8">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 08</span><h2>Repeated imaginary roots</h2></div><span class="tag">Characteristic roots</span></div>
+  <div class="math-question">Find the general solution of
+\[y^{(4)}+8y''+16y=0.\]</div>
+  <label class="answer-label" for="answer-8">Your current work</label>
+  <textarea id="answer-8" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-8">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-8" onclick="showNextHint(8)">Reveal Hint 1 of 3 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-8">No hints viewed</span></div>
+  <div class="hints" id="hints-8"><section class="hint" id="hint-8-1" hidden><div class="hint-top"><span class="hint-index">Principle 1</span><span class="hint-title">Recognize repeated characteristic roots</span></div><div class="hint-text">The polynomial factors as
+\[r^4+8r^2+16=(r^2+4)^2=(r-2i)^2(r+2i)^2.\]
+Each of \(\pm2i\) has multiplicity 2.</div></section><section class="hint" id="hint-8-2" hidden><div class="hint-top"><span class="hint-index">Principle 2</span><span class="hint-title">Use multiplicities in exponential form</span></div><div class="hint-text">For each repeated root \((r,2)\), use a degree-1 polynomial times \(e^{rx}\):
+\[y=(A+Bx)e^{2ix}+(C+Dx)e^{-2ix}.\]</div></section><section class="hint" id="hint-8-3" hidden><div class="hint-top"><span class="hint-index">Principle 3</span><span class="hint-title">Convert to a real solution family</span></div><div class="hint-text">Combine the conjugate terms using Euler’s formula. The multiplicity 2 means that both \(\cos2x\) and \(\sin2x\) get coefficients of the form \(C_1+C_2x\).</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(8)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(8)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-8" hidden></pre><div class="micro ai-status" role="status" id="status-8">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-8"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>The characteristic polynomial is</p>
+\[(r^2+4)^2=0,\]
+<p>with conjugate roots \(\pm2i\), both repeated twice. Therefore</p>
+\[\boxed{y=(C_1+C_2x)\cos2x+(C_3+C_4x)\sin2x}.\]</div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(8)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+<article class="problem" id="problem-9" data-problem="9">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 09</span><h2>Construct an ODE from a given solution</h2></div><span class="tag">Reverse construction</span></div>
+  <div class="math-question">Find <strong>a differential equation</strong> that has
+\[y(x)=(1+2x)\cos2x+e^x\]
+as a solution.</div>
+  <label class="answer-label" for="answer-9">Your current work</label>
+  <textarea id="answer-9" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-9">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-9" onclick="showNextHint(9)">Reveal Hint 1 of 3 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-9">No hints viewed</span></div>
+  <div class="hints" id="hints-9"><section class="hint" id="hint-9-1" hidden><div class="hint-top"><span class="hint-index">Principle 3 (reverse)</span><span class="hint-title">Read frequencies from trigonometric terms</span></div><div class="hint-text">Work backward using Euler’s formula. The factor \(\cos2x\) corresponds to the conjugate roots \(r=2i\) and \(r=-2i\).</div></section><section class="hint" id="hint-9-2" hidden><div class="hint-top"><span class="hint-index">Principle 2 (reverse)</span><span class="hint-title">Read multiplicities from polynomial degree</span></div><div class="hint-text">The coefficient \(1+2x\) is a polynomial of degree 1, so each of \(\pm2i\) must have multiplicity at least 2. The term \(e^x\) contributes root \(r=1\) (multiplicity 1). For a simple choice, take the minimal multiplicities:
+\[P(r)=(r^2+4)^2(r-1).\]</div></section><section class="hint" id="hint-9-3" hidden><div class="hint-top"><span class="hint-index">Principle 1 (reverse)</span><span class="hint-title">Expand the characteristic polynomial</span></div><div class="hint-text">Use \(y^{(k)}\longleftrightarrow r^k\) backward:
+\[\begin{aligned}
+P(r)&=(r^4+8r^2+16)(r-1)\\
+&=r^5-r^4+8r^3-8r^2+16r-16.
+\end{aligned}\]
+Replace each \(r^k\) by \(y^{(k)}\).</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(9)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(9)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-9" hidden></pre><div class="micro ai-status" role="status" id="status-9">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-9"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>The required roots for a convenient minimal-order constant-coefficient equation are \(\pm2i\), each with multiplicity 2, together with \(1\) (multiplicity 1).</p>
+\[\begin{aligned}
+P(r)&=(r^2+4)^2(r-1)\\
+&=r^5-r^4+8r^3-8r^2+16r-16.
+\end{aligned}\]
+<p>Thus one suitable equation is</p>
+\[\boxed{y^{(5)}-y^{(4)}+8y^{(3)}-8y''+16y'-16y=0}.\]</div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(9)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+<article class="problem" id="problem-10" data-problem="10">
+  <div class="problem-header"><div><span class="eyebrow">PROBLEM 10</span><h2>Construct an ODE from a given solution</h2></div><span class="tag">Reverse construction</span></div>
+  <div class="math-question">Find <strong>a differential equation</strong> that has
+\[y(x)=(1+x^2)\cos x\]
+as a solution.</div>
+  <label class="answer-label" for="answer-10">Your current work</label>
+  <textarea id="answer-10" spellcheck="false" placeholder="Write your attempt here. For example, explain your strategy or the step where you are stuck."></textarea>
+  <div class="micro" id="save-10">Your writing is saved in this browser.</div>
+  <div class="hint-actions"><button class="btn secondary" type="button" id="next-10" onclick="showNextHint(10)">Reveal Hint 1 of 3 <span aria-hidden="true">→</span></button><span class="hint-counter" id="count-10">No hints viewed</span></div>
+  <div class="hints" id="hints-10"><section class="hint" id="hint-10-1" hidden><div class="hint-top"><span class="hint-index">Principle 3 (reverse)</span><span class="hint-title">Include conjugate characteristic roots</span></div><div class="hint-text">\(\cos x\) corresponds to \(r=i\) and \(r=-i\). A real constant-coefficient equation must include the conjugate pair, even if the displayed solution contains no sine term.</div></section><section class="hint" id="hint-10-2" hidden><div class="hint-top"><span class="hint-index">Principle 2 (reverse)</span><span class="hint-title">Determine the root multiplicities</span></div><div class="hint-text">The coefficient \(1+x^2\) has degree 2, so the roots \(\pm i\) must each have multiplicity at least 3. Choose multiplicity 3 for each:
+\[P(r)=(r-i)^3(r+i)^3=(r^2+1)^3.\]</div></section><section class="hint" id="hint-10-3" hidden><div class="hint-top"><span class="hint-index">Principle 1 (reverse)</span><span class="hint-title">Write the differential equation</span></div><div class="hint-text">Expand
+\[P(r)=(r^2+1)^3=r^6+3r^4+3r^2+1.\]
+Replace \(r^k\) by \(y^{(k)}\). Optionally verify that \((1+x^2)\cos x\) belongs to the resulting general solution family.</div></section></div>
+  <div class="ai-panel"><div class="ai-panel-top"><div><h3>Consult AI · Diagnose my work</h3><p>Use your attempt to request <strong>one targeted correction or hint</strong> without the full answer.</p></div><span class="ai-icon" aria-hidden="true">✧</span></div>
+    <div class="ai-actions"><button class="btn primary" type="button" onclick="makePrompt(10)">Prepare diagnosis</button><button class="btn secondary" type="button" onclick="copyPrompt(10)">Copy prompt</button><a class="btn external" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">Open ChatGPT ↗</a></div>
+    <pre class="prompt" id="prompt-10" hidden></pre><div class="micro ai-status" role="status" id="status-10">This page does not call an AI service directly.</div>
+  </div>
+  <details class="solution" id="solution-10"><summary>Show the complete solution <span class="solution-sub">Check after attempting the problem</span></summary><div class="solution-body"><p>Use roots \(\pm i\) with multiplicity 3, so</p>
+\[P(r)=(r^2+1)^3=r^6+3r^4+3r^2+1.\]
+<p>One suitable equation is</p>
+\[\boxed{y^{(6)}+3y^{(4)}+3y''+y=0}.\]
+<p>Its general real solution has the form</p>
+\[y=(C_0+C_1x+C_2x^2)\cos x+(D_0+D_1x+D_2x^2)\sin x.\]
+<p>The given solution corresponds to \(C_0=C_2=1\), with the other constants zero.</p></div></details>
+  <div class="card-footer"><button class="text-btn" type="button" onclick="resetOne(10)">Reset this problem</button><a href="#page-top">Back to top ↑</a></div>
+</article>
+</main><div class="footer">MATH 2650 · Exam 2 Review Session · For supplementary practice</div>
+<script>
+const problems={"1": {"statement": "Consider the autonomous equation\n\\[\\frac{dx}{dt}=e^{-x}(x^3-5x^2+8x-4).\\]\nFind all equilibrium solutions and determine their stability.", "coaching": "Check the two roots 1 and 2, use positivity of e^{-x} and the squared factor, deduce signs (-,+,+), then distinguish repelling versus one-sided attraction. The key class answer declares both unstable.", "steps": ["Find the equilibrium values", "Construct the sign chart", "Classify stability from both sides"], "total": 3}, "2": {"statement": "Consider the autonomous equation\n\\[\\frac{dx}{dt}=-(x-1)(x-2)^2(x-3)(x-4)^2.\\]\nFind all equilibrium solutions and determine their stability.", "coaching": "Equilibria: 1,2,3,4; signs (-,+,+,-,-); classifications unstable, unstable, stable, unstable. Repeated even roots do not switch signs.", "steps": ["Identify all equilibria", "Determine signs between equilibria", "Read stability from the phase line"], "total": 3}, "3": {"statement": "Use the Wronskian to prove that the functions\n\\[f(x)=e^x,\\qquad g(x)=xe^x,\\qquad h(x)=e^{-x}\\]\nare linearly independent on \\(\\mathbb R\\).", "coaching": "The first and second derivatives must be correct; determinant is 4 e^x (not constant 4); any nonzero Wronskian at one point suffices for linear independence.", "steps": ["Differentiate each function twice", "Form and simplify the determinant", "Explain why the result implies independence"], "total": 3}, "4": {"statement": "Use  Euler’s method  to approximate \\(y(\\frac35)\\) for\n\\[y'=5(x+y),\\qquad y(0)=1,\\qquad h=\\frac15.\\]\nShow your computations.", "coaching": "Apply 3 forward Euler steps with h=1/5, f=5(x+y); sequence y=1,2,21/5,44/5. Do not confuse current/next values. Final approximation 44/5.", "steps": ["Collect the given information", "Write Euler’s recurrence", "Calculate all three iterations"], "total": 3}, "5": {"statement": "Use  Euler’s method  to approximate \\(y(\\frac34)\\) for\n\\[y'=4xy,\\qquad y(0)=1,\\qquad h=\\frac14.\\]\nShow your computations.", "coaching": "Apply 3 Euler steps h=1/4, f=4xy. Sequence y=1,1,5/4,15/8. Final 15/8.", "steps": ["Collect the given information", "Write Euler’s recurrence", "Calculate all three iterations"], "total": 3}, "6": {"statement": "Find the general solution of\n\\[y^{(3)}-3y'+2y=0.\\]", "coaching": "Principle 1 characteristic polynomial r^3-3r+2=(r-1)^2(r+2). Principle 2 multiplicity k gives degree k-1 polynomial times e^(rx); final (C1+C2x)e^x+C3 e^-2x.", "steps": ["Form the characteristic polynomial", "Build contributions from each root"], "total": 2}, "7": {"statement": "Find the general solution of\n\\[y^{(4)}+5y''+4y=0.\\]", "coaching": "Follow Principles 1,2,3: characteristic equation and roots ±i, ±2i all simple; complex exponentials; convert to cos/sin.", "steps": ["Find the characteristic roots", "Write the exponential solutions", "Combine conjugate pairs"], "total": 3}, "8": {"statement": "Find the general solution of\n\\[y^{(4)}+8y''+16y=0.\\]", "coaching": "Follow Principles 1,2,3: repeated roots ±2i multiplicity 2, polynomial degree1 times exp, real (C1+C2x)cos2x+(C3+C4x)sin2x.", "steps": ["Recognize repeated characteristic roots", "Use multiplicities in exponential form", "Convert to a real solution family"], "total": 3}, "9": {"statement": "Find  a differential equation  that has\n\\[y(x)=(1+2x)\\cos2x+e^x\\]\nas a solution.", "coaching": "Use reverse Principles 3,2,1. Roots ±2i need multiplicity 2 due to degree-1 polynomial; e^x needs 1. Factor P=(r^2+4)^2(r-1), expand coefficients (1,-1,8,-8,16,-16). The task asks for one such ODE.", "steps": ["Read frequencies from trigonometric terms", "Read multiplicities from polynomial degree", "Expand the characteristic polynomial"], "total": 3}, "10": {"statement": "Find  a differential equation  that has\n\\[y(x)=(1+x^2)\\cos x\\]\nas a solution.", "coaching": "Use reverse Principles 3,2,1. Roots ±i of multiplicity 3 from polynomial of degree 2. P=(r^2+1)^3=r^6+3r^4+3r^2+1; ODE y^(6)+3y^(4)+3y''+y=0.", "steps": ["Include conjugate characteristic roots", "Determine the root multiplicities", "Write the differential equation"], "total": 3}};
+const TOTAL=10;
+const memoryFallback={};
+function getState(n,k){const id='m2650exam2_p'+n+'_'+k;try{return localStorage.getItem(id)}catch(_){return memoryFallback[id]??null}}
+function putState(n,k,v){const id='m2650exam2_p'+n+'_'+k;memoryFallback[id]=v;try{localStorage.setItem(id,v)}catch(_){}}
+function removeState(n,k){const id='m2650exam2_p'+n+'_'+k;delete memoryFallback[id];try{localStorage.removeItem(id)}catch(_){}}
+function shown(n){return Number(getState(n,'level')||0)}
+function typeset(node){if(window.MathJax&&window.MathJax.typesetPromise){window.MathJax.typesetPromise([node]).catch(()=>{})}}
+function paintHints(n){let k=shown(n),max=problems[n].total;for(let i=1;i<=max;i++){document.getElementById('hint-'+n+'-'+i).hidden=i>k}const next=document.getElementById('next-'+n);next.disabled=k===max;next.innerHTML=k===max?'All hints revealed ✓':'Reveal Hint '+(k+1)+' of '+max+' <span aria-hidden="true">→</span>';document.getElementById('count-'+n).textContent=k===0?'No hints viewed':k+' of '+max+' hints viewed';refreshProgress()}
+function showNextHint(n){const k=shown(n),max=problems[n].total;if(k>=max)return;putState(n,'level',String(k+1));paintHints(n);typeset(document.getElementById('hint-'+n+'-'+(k+1)))}
+function refreshProgress(){let practiced=0;for(let n=1;n<=TOTAL;n++){if(shown(n)>0||document.getElementById('answer-'+n).value.trim())practiced++}document.getElementById('complete-count').textContent=practiced+' / '+TOTAL;document.getElementById('progress-fill').style.width=(practiced/TOTAL*100)+'%'}
+function makePrompt(n){const current=document.getElementById('answer-'+n).value.trim();putState(n,'work',current);const p=problems[n],level=shown(n);const lastStep=level>0?p.steps[level-1]:'No instructor hint has been viewed yet.';const prompt=`You are a careful undergraduate ODE review tutor helping with MATH 2650 Exam 2. Your goal is to support independent thinking, not to solve the problem for the student.
+
+Problem ${n}:
+${p.statement}
+
+Student's attempt:
+${current||'[No attempt written yet]'}
+
+Instructor's intended solution pathway:
+${p.coaching}
+
+Instructor hint steps (titles only):
+${p.steps.map((s,i)=>(i+1)+'. '+s).join('\n')}
+
+Hints already revealed: ${level}/${p.total}.
+Most recent revealed step: ${lastStep}
+
+Please respond using these rules:
+1. Diagnose ONLY the student's currently written work. Check arithmetic, theorem use, notation, and logical reasoning.
+2. State whether the submitted work is correct so far, incomplete, or contains an error. If incorrect, identify ONLY the FIRST important mistake or unjustified step.
+3. Give exactly ONE small guiding question or hint that helps with the next move. Prefer the instructor's solution method.
+4. Do NOT reveal the final solution, carry out all remaining steps, or skip ahead of the student's progress.
+5. If the student's response is empty, give only a first-step question.
+6. Be concise (at most 110 words). Use clear, precise undergraduate mathematics language.
+7. If there is a subtle mathematical issue, say so rather than guessing.`;
+const el=document.getElementById('prompt-'+n);el.textContent=prompt;el.hidden=false;document.getElementById('status-'+n).textContent='Prompt ready. Copy it, then open ChatGPT and paste it into a chat.';return prompt}
+async function copyPrompt(n){let el=document.getElementById('prompt-'+n),s=makePrompt(n);try{await navigator.clipboard.writeText(s);document.getElementById('status-'+n).textContent='Prompt copied. Open ChatGPT and paste it.'}catch(_){el.hidden=false;document.getElementById('status-'+n).textContent='Clipboard access was blocked. Select and copy the text shown above manually.'}}
+function resetOne(n){if(!confirm('Clear your draft and revealed hints for Problem '+n+'?'))return;document.getElementById('answer-'+n).value='';removeState(n,'work');removeState(n,'level');document.getElementById('prompt-'+n).textContent='';document.getElementById('prompt-'+n).hidden=true;document.getElementById('status-'+n).textContent='This page does not call an AI service directly.';document.getElementById('solution-'+n).open=false;paintHints(n)}
+for(let n=1;n<=TOTAL;n++){const area=document.getElementById('answer-'+n);const saved=getState(n,'work');if(saved!==null)area.value=saved;area.addEventListener('input',()=>{putState(n,'work',area.value);refreshProgress()});paintHints(n);document.getElementById('solution-'+n).addEventListener('toggle',ev=>{if(ev.target.open)typeset(ev.target)})}
+refreshProgress();
+</script>
+</body></html>
